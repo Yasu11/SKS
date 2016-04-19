@@ -1,6 +1,5 @@
-package test;
+package de.pxbox.sks;
 
-import de.pxbox.sks.SKSPlayer;
 import junit.framework.TestCase;
 
 /**
@@ -17,4 +16,12 @@ public class SKSPlayerTest extends TestCase {
         assertEquals(1876, p.getID());
     }
 
+    public void testSetName() throws Exception {
+        SKSPlayer p = new SKSPlayer(1876,"RandomGuy");
+        assertEquals("RandomGuy", p.getName());
+        p.setName("RandomGuy2");
+        assertEquals("RandomGuy2", p.getName());
+        p.setName(null);
+        assertNotNull(p.getName());
+    }
 }
