@@ -1,11 +1,13 @@
 package de.pxbox.sks;
 
+import de.pxbox.sks.gametypes.ASKSGT;
+
 import java.util.List;
 
 /**
  * Created by Yasin on 19.04.2016.
  */
-public interface ISKSGame<GT extends IGameType> {
+public interface ISKSGame<GT extends ASKSGT> {
 
     boolean isValid();
 
