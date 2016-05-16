@@ -7,19 +7,15 @@ import java.util.Arrays;
  */
 public final class ConfigOption {
 
-    private final boolean knockable;
-    private final boolean callable;
-    private final int[] playerOptions;
+    private final int playerOptions;
     private final int[] winnerOptions;
 
-    public ConfigOption(int[] winnerOptions, int[] playerOptions, boolean callable, boolean knockable) throws IllegalArgumentException {
-        if (winnerOptions == null || playerOptions == null)
+    public ConfigOption(int[] winnerOptions, int playerOptions) throws IllegalArgumentException {
+        if (winnerOptions == null)
             throw new IllegalArgumentException("winner and player options may not be null!");
 
         this.winnerOptions = winnerOptions;
         this.playerOptions = playerOptions;
-        this.callable = callable;
-        this.knockable = knockable;
     }
 
     @Override
@@ -29,31 +25,19 @@ public final class ConfigOption {
 
         ConfigOption that = (ConfigOption) o;
 
-        if (knockable != that.knockable) return false;
-        if (callable != that.callable) return false;
-        if (!Arrays.equals(playerOptions, that.playerOptions)) return false;
+        if (playerOptions != that.playerOptions) return false;
         return Arrays.equals(winnerOptions, that.winnerOptions);
 
     }
 
     @Override
     public int hashCode() {
-        int result = (knockable ? 1 : 0);
-        result = 31 * result + (callable ? 1 : 0);
-        result = 31 * result + Arrays.hashCode(playerOptions);
+        int result = playerOptions;
         result = 31 * result + Arrays.hashCode(winnerOptions);
         return result;
     }
 
-    public boolean isKnockable() {
-        return knockable;
-    }
-
-    public boolean isCallable() {
-        return callable;
-    }
-
-    public int[] getPlayerOptions() {
+    public int getPlayerOptions() {
         return playerOptions;
     }
 
